@@ -6,7 +6,7 @@ PlotCloser replies to new property and car leads in seconds, 24/7. It finds matc
 
 | | Link |
 |---|---|
-| 🌐 Live website | _coming soon (Vercel)_ |
+| 🌐 Live website | https://plotcloser.vercel.app ([chat](https://plotcloser.vercel.app/listings) · [agency dashboard](https://plotcloser.vercel.app/admin)) |
 | 🔌 Agent API base URL | https://plotcloser.onrender.com ([health](https://plotcloser.onrender.com/health) · [docs](https://plotcloser.onrender.com/docs)) |
 | 🎥 Demo video | _coming soon_ |
 | 📝 Paper canvas photo | _coming soon_ |
@@ -184,7 +184,30 @@ Run the benchmark:
 
 ### Deploy
 - **API → Render:** New Web Service from this repo, Runtime **Docker**, Root Directory **`backend`**, Health Check Path `/health`, environment variables from `.env.example`.
-- **Website → Vercel:** _coming soon._
+- **Website → Vercel:** import this repo, Root Directory **`frontend`**, environment variable `NEXT_PUBLIC_API_URL=https://plotcloser.onrender.com` (set it before building: Next.js bakes it into the site).
+- **Keep-alive:** UptimeRobot calls `/health` every 5 minutes so the free Render instance never sleeps.
+
+### Run the website locally
+```powershell
+cd frontend
+npm install
+echo NEXT_PUBLIC_API_URL=http://localhost:8000 > .env.local
+npm run dev        # http://localhost:3000
+```
+
+## 🌐 Website pages
+
+| Page | Who | What |
+|---|---|---|
+| `/` | Customer | Landing page: problem, how it works, pricing |
+| `/listings` | Customer | Listing cards with filters + chat with the agent (tool badges show which tools ran) |
+| `/admin` | Agency | Password login (checked by the API, kept in sessionStorage) |
+| `/admin/dashboard` | Agency | Stats (leads, hot leads, visits, blocked attacks, avg reply time, AI cost) + lead pipeline board, auto-refresh |
+| `/admin/visits` | Agency | Booked visits / test drives and follow-ups |
+| `/admin/listings` | Agency | All listings + add a new listing (the agent can sell it immediately) |
+| `/admin/chats` | Agency | Every conversation with tools, tokens, latency and a "blocked only" safety filter |
+
+Each browser gets a random `user_id` (localStorage), so returning visitors are remembered (long-term memory). "New chat" creates a new `thread_id` (fresh short-term memory).
 
 ---
 
@@ -204,6 +227,10 @@ backend/
     routes/            admin + public listings API
   tests/run_benchmark.py
   Dockerfile
+frontend/
+  app/                 Next.js pages: landing, listings + chat, admin (dashboard, visits, listings, chats)
+  components/          Navbar, ChatPanel, ListingCard, AdminShell
+  lib/                 API client + types, visitor identity, admin auth, admin data hook
 tests.json             10 test cases + 5 attack tests
 .env.example           required settings (no real secrets)
 ```
