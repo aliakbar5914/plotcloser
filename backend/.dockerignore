@@ -1,0 +1,7 @@
+# Never put these inside the container image
+.env
+venv/
+__pycache__/
+*.pyc
+tests/
+.git/
