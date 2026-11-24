@@ -8,10 +8,10 @@ PlotCloser replies to new property and car leads in seconds, 24/7. It finds matc
 |---|---|
 | 🌐 Live website | https://plotcloser.vercel.app ([chat](https://plotcloser.vercel.app/listings) · [agency dashboard](https://plotcloser.vercel.app/admin)) |
 | 🔌 Agent API base URL | https://plotcloser.onrender.com ([health](https://plotcloser.onrender.com/health) · [docs](https://plotcloser.onrender.com/docs)) |
-| 🎥 Demo video | _coming soon_ |
-| 📝 Paper canvas photo | _coming soon_ |
+| 🎥 Demo video | [Watch on Google Drive](https://drive.google.com/file/d/1j5_YfhTJJp8OUAw7BqpDCk_FMSpQUHBW/view?usp=sharing) (2:40, narrated) |
+| 📝 Canvas | [View canvas](https://drive.google.com/file/d/1qB01r13jGeAxp9B535CJFAMK2fgERGd6/view?usp=sharing) (digital) |
 
-![Demo GIF](docs/demo.gif) <!-- add after recording -->
+![Demo GIF](docs/demo.gif)
 
 ---
 
